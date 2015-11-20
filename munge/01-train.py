@@ -1,6 +1,6 @@
 import pandas as pd
 
 
-train = pd.read_csv("../data/original/training_set.tsv", sep='\t')
+train = pd.read_csv("../data/original/train.csv")
 
 train.to_csv("../data/prepped/train.csv")
