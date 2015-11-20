@@ -74,11 +74,11 @@ def make_submission(y_prob, ids, encoder, fname):
     print("Wrote submission to file {}.".format(fname))
 
 print("Loading data...")
-X, labels = load_data('train.csv', train=True)
+X, labels = load_data('../data/prepped/train.csv', train=True)
 X, scaler = preprocess_data(X)
 y, encoder = preprocess_labels(labels)
 
-X_test, ids = load_data('test.csv', train=False)
+X_test, ids = load_data('../data/prepped/test.csv', train=False)
 X_test, _ = preprocess_data(X_test, scaler)
 
 nb_classes = y.shape[1]
@@ -115,4 +115,4 @@ model.fit(X, y, nb_epoch=20, batch_size=128, validation_split=0.15)
 
 print("Generating submission...")
 proba = model.predict_proba(X_test)
-make_submission(proba, ids, encoder, fname='keras-otto.csv')
+make_submission(proba, ids, encoder, fname='../data/prepped/submission-neural-networks.csv')
